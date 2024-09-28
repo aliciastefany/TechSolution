@@ -1,0 +1,61 @@
+.contentSingUp{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to right, #295980, #080772 );
+    height: 90dvh;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 20px;
+
+    & h1{
+        background-color: #030dff;
+        padding: 15px;
+        padding-inline: 40px;
+        border-radius: 30px;
+        position: fixed;
+        top: -40px;
+    }
+}
+
+.formSingUp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & input{
+        width: 350px;
+        padding: 10px;
+        border: none;
+        border-radius: 20px;
+    }
+
+    & button{
+        margin-top: 20px;
+        padding: 10px;
+        width: 200px;
+        border: none;
+        border-radius: 20px;
+        background-color: #030dff;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+
+.fullName{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    & input{
+        width: 155px;
+    }
+}

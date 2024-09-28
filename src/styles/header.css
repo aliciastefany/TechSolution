@@ -1,0 +1,53 @@
+h1{
+    color: #fff;
+    font-size: larger;
+}
+
+.forms {
+    width: 75vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding-top: 20px;
+
+    & input{
+        background: #070b6d;
+        width: 30vw;
+        height: 25px;
+        border: solid #fff;
+        border-radius: 15px;
+        padding: 10px;
+        color: #fff;
+        outline: none;
+    }
+
+    & select{
+        background: #070b6d;
+        width: 10vw;
+        padding: 8px;
+        color: #fff;
+        border: solid #fff;
+        border-radius: 10px;
+        outline: none;
+        margin-top: -10px;
+        cursor: pointer;        
+    }
+
+    & .filter, .ordem {
+        display: flex;
+        flex-direction: column;
+        margin-top: -35px;
+    }
+
+    & .button{
+        background: #030dff;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 7px;
+        color: #fff;
+        font-weight: bolder;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}

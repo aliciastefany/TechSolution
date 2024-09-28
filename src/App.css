@@ -1,0 +1,18 @@
+.dashboard {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.dashboard-content {
+  background: linear-gradient(#295980, #080772);
+  width: 75vw;
+  height: 80vh;
+  margin-top: 40px;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-between;
+}

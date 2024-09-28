@@ -1,0 +1,26 @@
+.containHeader{
+    display: flex;
+    justify-content: space-between;
+    width: 70vw;
+
+    & .leftHeader{
+        font-size: 18px;
+    }
+
+    & .rightHeader{
+        color: #fff;
+        font-weight: 900;
+        font-size: 17px;
+        & select{
+            background: #070b6d;
+            width: 15vw;
+            padding: 8px;
+            color: #fff;
+            border: solid #fff;
+            border-radius: 10px;
+            outline: none;
+            margin-top: -10px;
+            cursor: pointer;        
+        }
+    }
+}

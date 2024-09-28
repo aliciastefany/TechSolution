@@ -1,0 +1,96 @@
+.outContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modalContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(#295980, #080772);
+  width: 700px;
+  height: 500px;
+  border-radius: 20px;
+  color: #fff;
+  padding: 15px 25px;
+  overflow: auto;
+}
+
+.headerModal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalFormPessoal {
+  display: flex;
+  flex-direction: column;
+}
+
+.lineOne {
+  display: flex;
+  justify-content: start;
+  gap: 60px;
+}
+
+.lineTwo {
+  display: flex;
+  justify-content: start;
+  gap: 60px;
+}
+
+.close {
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 30px;
+}
+
+.nome input {
+  background: #070b6d;
+  width: 20vw;
+  height: 25px;
+  border: solid #fff;
+  border-radius: 15px;
+  padding: 10px;
+  color: #fff;
+  outline: none;
+}
+
+.funcao select {
+  background: #070b6d;
+  width: 10vw;
+  padding: 13px;
+  color: #fff;
+  border: solid #fff;
+  border-radius: 15px;
+  outline: none;
+  cursor: pointer;
+}
+
+.phone input {
+  background: #070b6d;
+  width: 20vw;
+  height: 25px;
+  border: solid #fff;
+  border-radius: 15px;
+  padding: 10px;
+  color: #fff;
+  outline: none;
+}
+
+.cpf input {
+  background: #070b6d;
+  width: 20vw;
+  height: 25px;
+  border: solid #fff;
+  border-radius: 15px;
+  padding: 10px;
+  color: #fff;
+  outline: none;
+}
