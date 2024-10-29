@@ -5,7 +5,7 @@ function Lucro() {
   return (
     <div className='containerLucro'>
         <div className="left">
-            <h1>LUCRO MENSAL</h1>
+            <h1>LUCROS</h1>
             <p>R$ 3000,00</p>
         </div>
 

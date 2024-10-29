@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './components/Header'
 import Content from './components/Content'
 
-function Cadastros() {  
+function Cadastros() {
+  const [passarDados, setPassarDados] = useState('')
+
+  function handlePropsSearch(user) {
+    let newSearchData = passarDados
+
+    newSearchData = user
+    setPassarDados(newSearchData)
+  }  
   return (
     <div>
-      <Header/>      
-      <Content />
+      <Header onPushSearch={handlePropsSearch}/>      
+      <Content search={passarDados}/>
     </div>
   )
 }

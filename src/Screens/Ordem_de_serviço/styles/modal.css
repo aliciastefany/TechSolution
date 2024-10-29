@@ -94,32 +94,3 @@
   color: #fff;
   outline: none;
 }
-
-.buttonSpace {
-  display: flex;
-  gap: 20px;
-  justify-content: end;
-  margin-top: 20px;
-
-  & .buttonCancelar {
-    background-color: #d9d9d8;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 7px;
-    color: #000;
-    font-weight: bolder;
-    cursor: pointer;
-    text-decoration: none;
-  }
-
-  & .buttonSalvar {
-    background: #030dff;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 7px;
-    color: #fff;
-    font-weight: bolder;
-    cursor: pointer;
-    text-decoration: none;
-  }
-}

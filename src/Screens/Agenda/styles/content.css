@@ -1,0 +1,54 @@
+.container {
+    background: #fff;
+    width: 72vw;
+    height: 53vh;
+    margin-top: 25px;
+    border-radius: 10px;
+    overflow: auto;
+    padding: 20px;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  th {
+    text-align: center;
+    border-bottom: inset;
+    padding-bottom: 5px;
+    color: #030dff;
+  }
+  .content-status {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .status {
+    width: 100px;
+    padding: 2px 7px;
+    color: #fff;
+    border-radius: 7px;
+  }
+  
+  td {
+    padding-top: 15px;
+    text-align: center;
+    color: #030dff;
+  }
+  
+  .item-table:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f4f4f4;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    background: #f4f4f4;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+  }

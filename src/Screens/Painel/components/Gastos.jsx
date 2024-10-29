@@ -6,7 +6,7 @@ function Gastos() {
   return (
     <div className='containerGastos'>
         <div className="headerGastos">
-            <h1>GASTO MENSAL</h1>
+            <h1>GASTOS</h1>
             <BsGraphDownArrow className='icon'/>
         </div>
         <p>R$ 1000,00</p>

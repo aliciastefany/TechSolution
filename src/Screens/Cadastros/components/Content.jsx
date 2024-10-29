@@ -1,37 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/content.css";
 import { FaTrashCan } from "react-icons/fa6";
 import { RiPencilFill } from "react-icons/ri";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../../firebase";
 
-function Content() {
-  const users = [
-    {
-      id: 1,
-      name: "João",
-      funcao: "Cliente"
-    },
-    {
-      id: 2,
-      name: "Lucas",
-      funcao: "Cliente"
-    },
-    {
-      id: 3,
-      name: "Carlos",
-      funcao: "Mecânico"
-    },
-    {
-      id: 4,
-      name: "Ryan",
-      funcao: "Cliente"
-    },
-    {
-      id: 5,
-      name: "Wellington",
-      funcao: "Mecânico"
-    },
+function Content({ search }) {
+  const [dataCadastro, setDataCadastro] = useState([]);
 
-  ];
+  const cadastroCollectionRef = collection(db, "cadastros");
+
+  const deleteDataCadastro = async (id) => {
+    const userDataCadastro = doc(db, "cadastros", id);
+    deleteDoc(userDataCadastro);
+    getDataCadastro();
+  };
+
+  const getDataCadastro = async () => {
+    const data = await getDocs(cadastroCollectionRef);
+    setDataCadastro(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+
+  useEffect(() => {
+    getDataCadastro();
+  }, []);
   return (
     <div className="container">
       <table>
@@ -44,18 +37,28 @@ function Content() {
           </tr>
         </thead>
         <tbody>
-          {users.map((item) => (
-            <tr key={item.id}>
-              <td>{item.name}</td>
-              <td className="content-status"><p className="status">{item.funcao}</p></td>
-              <td className="item-table">
-                <RiPencilFill />
-              </td>
-              <td className="item-table">
-                <FaTrashCan />
-              </td>
-            </tr>
-          ))}
+          {dataCadastro
+            .filter((item) =>
+              item.nomeCliente.toLowerCase().includes(search.toLowerCase())
+            )
+            .map((item) => (
+              <tr key={item.id}>
+                <td>{item.nomeCliente}</td>
+                <td className="content-status">
+                  <p className="status">{item.funcao}</p>
+                </td>
+                <td className="item-table">
+                  <RiPencilFill />
+                </td>
+                <td className="item-table">
+                  <FaTrashCan
+                    onClick={() => {
+                      deleteDataCadastro(item.id);
+                    }}
+                  />
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

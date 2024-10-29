@@ -1,54 +1,254 @@
 .container {
-    background: #fff;
-    width: 72vw;
-    height: 53vh;
-    margin-top: 25px;
-    border-radius: 10px;
-    overflow: auto;
-    padding: 20px;
+  background: #fff;
+  width: 72vw;
+  height: 53vh;
+  margin-top: 25px;
+  border-radius: 10px;
+  overflow: auto;
+  padding: 20px;
 }
 
-table{
-    width: 100%;
+table {
+  width: 100%;
 }
 
-th{
-    text-align: center;
-    border-bottom: inset;
-    padding-bottom: 5px;
-    color: #030dff;
+th {
+  text-align: center;
+  border-bottom: inset;
+  padding-bottom: 5px;
+  color: #030dff;
 }
-.content-status{
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.content-status {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.status{
-    width: 100px;
-    padding: 2px 7px;
-    color: #fff;
-    border-radius: 7px;
+.status {
+  width: 100px;
+  padding: 2px 7px;
+  color: #fff;
+  border-radius: 7px;
 }
 
-td{
-    padding-top: 15px;
-    text-align: center;
-    color: #030dff;
+td {
+  padding-top: 15px;
+  text-align: center;
+  color: #030dff;
 }
 
 .item-table:hover {
-    opacity: 0.8;
-    cursor: pointer;
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #F4F4F4;
+  background-color: #f4f4f4;
 }
 ::-webkit-scrollbar {
-    width: 6px;
-    background: #F4F4F4;
+  width: 6px;
+  background: #f4f4f4;
 }
 ::-webkit-scrollbar-thumb {
-    background: #dad7d7;
+  background: #dad7d7;
+}
+
+/* nova os */
+
+.lineone {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+
+  & input {
+    background-color: #d9d9d8;
+    border: none;
+    padding: 9px;
+    border-radius: 9px;
+  }
+
+  & p {
+    color: #030dff;
+  }
+
+  & .nameClient input {
+    width: 300px;
+  }
+
+  & .buttonModal {
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #081b6e;
+    padding: 15px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+  }
+}
+
+.linetwo {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+
+  & input {
+    background-color: #d9d9d8;
+    border: none;
+    padding: 9px;
+    border-radius: 9px;
+  }
+
+  & p {
+    color: #030dff;
+  }
+}
+
+.geral {
+  border-bottom-width: 2px;
+  border-color: #030dff;
+  color: #030dff;
+  padding-bottom: 20px;
+}
+
+.linethree {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+
+  & input {
+    background-color: #d9d9d8;
+    border: none;
+    padding: 9px;
+    border-radius: 9px;
+    width: 200px;
+  }
+
+  & p {
+    color: #030dff;
+  }
+
+  & .servico input {
+    width: 400px;
+  }
+}
+
+.descricao input {
+  background-color: #d9d9d8;
+  border: none;
+  padding: 9px;
+  border-radius: 9px;
+  width: 500px;
+}
+
+.descricao p {
+  color: #030dff;
+}
+
+.lineProduct {
+  align-items: center;
+  gap: 50px;
+
+  & input {
+    background-color: #d9d9d8;
+    border: none;
+    padding: 9px;
+    border-radius: 9px;
+  }
+
+  & p {
+    color: #030dff;
+  }
+
+  & .nameProduct input {
+    width: 300px;
+  }
+
+  & .buttonAdd {
+    border: none;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #081b6e;
+    padding: 15px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  & .buttonRemove{
+    border: #081b6e 1px solid;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #fff;
+    padding: 15px;
+    color: #081b6e;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+}
+
+.linefour {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & input {
+    background-color: #d9d9d8;
+    border: none;
+    padding: 9px;
+    border-radius: 9px;
+  }
+
+  & p {
+    color: #030dff;
+  }
+
+  & h1 {
+    color: #030dff;
+    font-size: 50px;
+    margin-right: 30px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: end;
+  margin-top: 20px;
+
+  & .buttonCancelar {
+    background-color: #d9d9d8;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 7px;
+    color: #000;
+    font-weight: bolder;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  & .buttonSalvar {
+    background: #030dff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 7px;
+    color: #fff;
+    font-weight: bolder;
+    cursor: pointer;
+    text-decoration: none;
+  }
 }

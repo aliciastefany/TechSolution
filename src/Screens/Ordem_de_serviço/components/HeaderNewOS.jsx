@@ -3,7 +3,13 @@ import "../styles/headeros.css";
 import { auth, db } from "../../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
-function HeaderNewOS() {
+
+
+function HeaderNewOS({onPushStatus}) {
+
+  const [status, setStatus] = useState('Orçamentos')
+  onPushStatus(status)
+
   const [userDetails, setUserDetails] = useState('');
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user) => {
@@ -20,6 +26,8 @@ function HeaderNewOS() {
   useEffect(() => {
     fetchUserData()
   }, [])
+
+
   return (
     <div className="containHeader">
       <div className="leftHeader">
@@ -29,16 +37,19 @@ function HeaderNewOS() {
 
       <div className="rightHeader">
         <p>Situação da O.S.</p>
-        <select>
-          <option value="orcamentos">Orçamentos</option>
-          <option value="emexecucao">Em Execução</option>
-          <option value="entregue">Entregue</option>
-          <option value="finalizado">Finalizado</option>
-          <option value="cancelados">Cancelados</option>
+        <select onChange={(e) => setStatus(e.target.value)}>
+          <option value="Orçamentos">Orçamentos</option>
+          <option value="Em Execução">Em Execução</option>
+          <option value="Entregue">Entregue</option>
+          <option value="Finalizado">Finalizado</option>
+          <option value="Cancelados">Cancelados</option>
         </select>
       </div>
     </div>
   );
+  
 }
 
 export default HeaderNewOS;
+
+

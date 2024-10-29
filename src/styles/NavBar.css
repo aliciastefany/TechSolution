@@ -1,52 +1,52 @@
-.menu{
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    height: 94vh;
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  height: 94vh;
 }
 
-.logo{
-    text-align: center;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+.logo {
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-.logo img{
-    width: 150px;
-    height: 100px;
-    object-fit: cover;
+.logo img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
 }
 
-.menu-list{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.item{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 1.1rem;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 10px;
-    border-radius: 10px;
-    transition: o.3s ease-in-out;
-    color: #070b6d;
+.item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 10px;
+  transition: o.3s ease-in-out;
+  color: #070b6d;
 }
 
-.exit{
-    margin-top: 20px;
+.exit {
+  margin-top: 20px;
 }
 
-.item:hover{
-    background: linear-gradient(to right, #295980, #080772 );
-    color: #dde6ed;
+.item:hover {
+  background: linear-gradient(to right, #295980, #080772);
+  color: #dde6ed;
 }
 
-.menu-list .item:active{
-    background-color: #27374d;
-    color: #dde6ed;
+.menu-list .ativo {
+  background: linear-gradient(to right, #295980, #080772);;
+  color: #dde6ed;
 }

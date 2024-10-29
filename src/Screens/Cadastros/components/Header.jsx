@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import "../../../styles/header.css";
-import Modal from './Modal'
+import Modal from "./Modal";
 
-function Header() {
+function Header({ onPushSearch }) {
   const [openModal, setOpenModal] = useState(false);
+  const [search, setSearch] = useState("");
+
+  onPushSearch(search);
 
   return (
     <div>
       <h1>CADASTROS</h1>
       <div className="forms">
-        <input type="text" placeholder="Pesquise pelo o nome..." />
-        <div className="filter">
+        <input
+          type="text"
+          placeholder="Pesquise pelo o nome..."
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        {/* <div className="filter">
           <p>Filtrar:</p>
           <select>
             <option value="todos">Todos</option>
@@ -25,10 +32,15 @@ function Header() {
             <option value="crescente">A-Z</option>
             <option value="decrescente">Z-A</option>
           </select>
-        </div>
-        <button className="button" onClick={() => setOpenModal(true)}>ADICIONAR</button>
+        </div> */}
+        <button className="button" onClick={() => setOpenModal(true)}>
+          ADICIONAR
+        </button>
       </div>
-      <Modal isOpen={openModal} setModalClose={ () => setOpenModal(!openModal) }/>
+      <Modal
+        isOpen={openModal}
+        setModalClose={() => setOpenModal(!openModal)}
+      />
     </div>
   );
 }
