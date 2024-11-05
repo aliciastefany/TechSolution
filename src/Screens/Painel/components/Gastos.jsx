@@ -27,7 +27,10 @@ function Gastos() {
         <h1>GASTOS</h1>
         <BsGraphDownArrow className="icon" />
       </div>
-      <p>R$ 1000,00</p>
+      <p>{valor.toLocaleString("pt-br", {
+        style: "currency",
+        currency: "BRL",
+      })}</p>
     </div>
   );
 }

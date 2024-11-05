@@ -6,7 +6,7 @@ import "./index.css";
 import Painel from "./Screens/Painel/Index.jsx";
 import OrdemServico from "./Screens/Ordem_de_serviço/Index.jsx";
 import Cadastros from "./Screens/Cadastros/Index.jsx";
-import Agenda from "./Screens/Agenda";
+import Agenda from "./Screens/Agenda/Index.jsx";
 import Login from "./Screens/Login/Index.jsx";
 import SingUp from "./Screens/SingUp/Index.jsx";
 import NovaOS from "./Screens/Ordem_de_serviço/NovaOS.jsx";
