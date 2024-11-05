@@ -34,10 +34,17 @@ function ContentNewOS({status}) {
 
   const [products, setProducts] = useState([]);
 
+  const [valorGastosProduto, setValorGastosProduto] = useState(0)
+
   const calcular = () => {
     const result = valorProduct * quantidade + valorServico;
     setTotal(result);
   };
+
+  const calcularGastosProduto = () => {
+    const result = valorProduct * quantidade;
+    setValorGastosProduto(result)
+  }
 
   useEffect(calcular);
 
@@ -72,10 +79,8 @@ function ContentNewOS({status}) {
       quantidade: quantidade,
       valor: valorProduct,
       maoObra: valorServico,
-      valorTotal: total.toLocaleString("pt-br", {
-        style: "currency",
-        currency: "BRL",
-      }),
+      valorTotal: total,
+      valorGastosProduto: valorGastosProduto
     });
     console.log("Os Criada");
 

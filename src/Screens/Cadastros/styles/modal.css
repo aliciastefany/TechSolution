@@ -43,6 +43,7 @@
   display: flex;
   justify-content: start;
   gap: 60px;
+  line-break: auto;
 }
 
 .close {
@@ -75,7 +76,7 @@
 
 .phone input {
   background: #070b6d;
-  width: 20vw;
+  width: 15vw;
   height: 25px;
   border: solid #fff;
   border-radius: 15px;
@@ -86,7 +87,7 @@
 
 .cpf input {
   background: #070b6d;
-  width: 20vw;
+  width: 15vw;
   height: 25px;
   border: solid #fff;
   border-radius: 15px;

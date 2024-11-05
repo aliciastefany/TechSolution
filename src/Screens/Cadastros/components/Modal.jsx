@@ -18,6 +18,7 @@ function Modal({ isOpen, setModalClose }) {
     }
   }
 
+  const [email, setEmail] = useState("");
   const [nameClient, setNameClient] = useState("");
   const [cpfCnpjClient, setCpfCnpjClient] = useState("");
   const [numberPhoneClient, setNumberPhoneClient] = useState("");
@@ -28,13 +29,13 @@ function Modal({ isOpen, setModalClose }) {
   const [funcao, setFuncao] = useState("cliente");
 
   console.log(funcao);
-  
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await addDoc(collection(db, "cadastros"), {
+    await addDoc(collection(db, "users"), {
+      email: email,
       nomeCliente: nameClient,
       cpfCnpjCliente: cpfCnpjClient,
       telefoneCliente: numberPhoneClient,
@@ -42,7 +43,7 @@ function Modal({ isOpen, setModalClose }) {
       marcaCarro: marcaCarClient,
       placaCarro: numberPlacaCarClient,
       kmCarro: numberKmCarClient,
-      funcao: funcao,
+      function: funcao,
     });
 
     await delay(500);
@@ -61,11 +62,11 @@ function Modal({ isOpen, setModalClose }) {
           <div className="modalFormPessoal">
             <div className="lineOne">
               <div className="cpf">
-                <p>CPF/CNPJ:</p>
+                <p>Email:</p>
                 <input
                   type="text"
-                  placeholder="Digite o CPF/CNPJ..."
-                  onChange={(e) => setCpfCnpjClient(e.target.value)}
+                  placeholder="Digite o Email..."
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="nome">
@@ -78,6 +79,14 @@ function Modal({ isOpen, setModalClose }) {
               </div>
             </div>
             <div className="lineTwo">
+              <div className="cpf">
+                <p>CPF/CNPJ:</p>
+                <input
+                  type="text"
+                  placeholder="Digite o CPF/CNPJ..."
+                  onChange={(e) => setCpfCnpjClient(e.target.value)}
+                />
+              </div>
               <div className="phone">
                 <p>Telefone:</p>
                 <input
@@ -86,22 +95,22 @@ function Modal({ isOpen, setModalClose }) {
                   onChange={(e) => setNumberPhoneClient(e.target.value)}
                 />
               </div>
-              <div className="funcao">
-                <p>Função:</p>
-                <select
-                  id="selecionar"
-                  onChange={(e) => {
-                    setFuncao(e.target.value), selecionar();
-                  }}
-                >
-                  <option id="option" value="cliente">
-                    Cliente
-                  </option>
-                  <option id="option" value="mecanico">
-                    Mecânico
-                  </option>
-                </select>
-              </div>
+            </div>
+            <div className="funcao">
+              <p>Função:</p>
+              <select
+                id="selecionar"
+                onChange={(e) => {
+                  setFuncao(e.target.value), selecionar();
+                }}
+              >
+                <option id="option" value="cliente">
+                  Cliente
+                </option>
+                <option id="option" value="mecanico">
+                  Mecânico
+                </option>
+              </select>
             </div>
           </div>
           <hr />

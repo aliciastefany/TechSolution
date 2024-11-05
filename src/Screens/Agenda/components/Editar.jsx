@@ -4,11 +4,16 @@ import { TfiClose } from "react-icons/tfi";
 import { db } from "../../../firebase";
 import { setDoc, doc, collection, addDoc, updateDoc } from "firebase/firestore";
 
-function Agendar({ isOpen, setEditarClose, receberDados }) {
+function Agendar({ isOpen, setEditarClose, receberDados, receberId }) {
   const [nomeCliente, setNomeCliente] = useState("");
   const [carroCliente, setCarroCliente] = useState("");
   const [dateAgenda, setDateAgenda] = useState("");
   const [hourAgenda, setHourAgenda] = useState("");
+
+  const [name, setName] = useState('')
+  const [car, setCar] = useState('')
+  const [date, setDate] = useState('')
+  const [hour, setHour] = useState('')
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -26,6 +31,9 @@ function Agendar({ isOpen, setEditarClose, receberDados }) {
     window.location.href = "../app/agenda";
   };
 
+  console.log(receberId);
+
+
   if (isOpen) {
     return (
       <div className="containerAgendar">
@@ -35,12 +43,12 @@ function Agendar({ isOpen, setEditarClose, receberDados }) {
             <TfiClose className="close" onClick={setEditarClose} />
           </div>
 
-          {receberDados.map((item) => (
-            <form key={item.id}>
+
+            <form>
               <div className="nameAgenda">
                 <p>Nome:</p>
                 <input
-                  value={item.name}
+                  value={name}
                   type="text"
                   onChange={(e) => setNomeCliente(e.target.value)}
                 />
@@ -50,7 +58,7 @@ function Agendar({ isOpen, setEditarClose, receberDados }) {
                 <input
                   type="text"
                   onChange={(e) => setCarroCliente(e.target.value)}
-                  value={item.car}
+                  value={car}
                 />
               </div>
               <div className="dateAgenda">
@@ -58,7 +66,7 @@ function Agendar({ isOpen, setEditarClose, receberDados }) {
                 <input
                   type="date"
                   onChange={(e) => setDateAgenda(e.target.value)}
-                  value={item.date}
+                  value={date}
                 />
               </div>
               <div className="hourAgenda">
@@ -66,11 +74,10 @@ function Agendar({ isOpen, setEditarClose, receberDados }) {
                 <input
                   type="time"
                   onChange={(e) => setHourAgenda(e.target.value)}
-                  value={item.hour}
+                  value={hour}
                 />
               </div>
             </form>
-          ))}
           <button className="button" onClick={handleSubmit}>
             Agendar
           </button>

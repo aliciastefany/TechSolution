@@ -7,12 +7,20 @@ import { db } from "../../../firebase";
 function Vendas() {
   const [ordemServico, setOrdemServico] = useState([]);
 
+  const valorTotal = ordemServico.map((item) => item.valorTotal);
+
+  const valor = ordemServico.reduce((a, b) => a + b.valorTotal, 0);
+
   const ordemServicoCollectionRef = collection(db, "dataOS");
 
   const getDataOrdemServico = async () => {
     const data = await getDocs(ordemServicoCollectionRef);
     setOrdemServico(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    console.log(ordemServico);
+    console.log(
+      valorTotal.reduce((acumulador, elemento) => acumulador + elemento, 0)
+    );
+    console.log(valor);
   };
 
   useEffect(() => {
@@ -37,9 +45,23 @@ function Vendas() {
             {ordemServico.map((item) => (
               <tr>
                 <td>{item.nomeCliente}</td>
-                <td>{item.valorTotal}</td>
+                <td>
+                  {item.valorTotal.toLocaleString("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
+                </td>
               </tr>
             ))}
+
+            <tr>
+              <td>
+                {valor.toLocaleString("pt-br", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

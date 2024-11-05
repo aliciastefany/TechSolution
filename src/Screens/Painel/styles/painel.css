@@ -63,13 +63,13 @@
     
         & .icon {
             color: #d9d9d8;
-            font-size: 100px;
+            font-size: 80px;
         }
     }
 
     & p{
         font-size: 30px;
-        margin: -5px;
+        margin: 5px;
         font-weight: bold;
         color: #d9d9d8;
     }
@@ -78,8 +78,9 @@
 
 .containerLucro{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background: linear-gradient(#d9d9d8, #a8a6a6);
+    gap: 50px;
     margin-top: 50px;
     border-radius: 20px;
     padding: 20px;

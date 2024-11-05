@@ -10,6 +10,8 @@ function Content({ search }) {
   const [openEditar, setOpenEditar] = useState(false);
   const [dadosAgenda, setDadosAgenda] = useState([]);
 
+  const [puxarId, setPuxarId] = useState('')
+
   const agendaCollectionRef = collection(db, "dataAgenda");
 
   const deleteAgenda = (id) => {
@@ -57,7 +59,8 @@ function Content({ search }) {
                 <td className="item-table">
                   <RiPencilFill
                     onClick={() => {
-                      setOpenEditar(true, item.id);
+                      setOpenEditar(true);
+                      setPuxarId(item.id)
                     }}
                   />
                 </td>
@@ -76,6 +79,7 @@ function Content({ search }) {
         isOpen={openEditar}
         setEditarClose={() => setOpenEditar(!openEditar)}
         receberDados={dadosAgenda}
+        receberId = {puxarId}
       />
     </div>
   );

@@ -26,6 +26,7 @@ function Index() {
             lastName: secondName,
             cpf: cpf,
             phone: phone,
+            function: "adm",
           };
           const docRef = doc(db, "users", user.uid);
           setDoc(docRef, userData);
