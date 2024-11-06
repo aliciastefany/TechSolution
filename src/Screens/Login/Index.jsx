@@ -15,7 +15,7 @@ function Index() {
       await signInWithEmailAndPassword(auth, email, password)
       window.location.href = "/app/app/painel"
       console.log('login feito com sucesso')
-    }catch (err) {
+    }catch (err){
       console.log(err)
     }
 
