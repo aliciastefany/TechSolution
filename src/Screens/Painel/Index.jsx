@@ -15,7 +15,7 @@ function Painel() {
       <Vendas />
       <div>
       <div>
-        <h1>Bem-vindo, {user.email}</h1>
+        <h1>Bem-vindo, {user.firstName} {user.lastName}</h1>
       </div>
         <Gastos />
         <Lucro />

@@ -6,6 +6,7 @@ import { doc, getDoc } from 'firebase/firestore';
 const useAuth = () => {
   const [user, setUser] = useState(null);
   const [permissions, setPermissions] = useState([]);
+  const [loading, setLoading] = useState(true);  
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -15,18 +16,20 @@ const useAuth = () => {
 
         if (docSnap.exists()) {
           setUser(docSnap.data());
-          setPermissions(docSnap.data().permissions);
+          setPermissions(docSnap.data().role || []);
         }
       } else {
         setUser(null);
         setPermissions([]);
       }
+
+      setLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
-  
-  return { user, permissions };
+
+  return { user, permissions, loading };  
 };
 
 export default useAuth;
