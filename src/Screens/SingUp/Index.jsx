@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./styles/singup.css";
 import { auth, db } from "../../firebase";
 import { createUserWithEmailAndPassword, } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
+import handleErrorCode from "../../utils/handleErrorCode";
 
 function Index() {
   const [email, setEmail] = useState("");
@@ -12,32 +13,32 @@ function Index() {
   const [cpf, setCpf] = useState("");
   const [phone, setPhone] = useState("");
 
-  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
+
           const userData = {
             email: email,
             firstName: firstName,
             lastName: secondName,
             cpf: cpf,
             phone: phone,
-            function: "adm",
+            role: "MASTER", // MASTER, ADMIN ou USER
+            permissions: ['read', 'write', 'update', 'delete'] // read, write, update, delete
           };
-          const docRef = doc(db, "users", user.uid);
-          setDoc(docRef, userData);
+          const docRef = doc(db, 'users', user.uid);
+
+          setDoc(docRef, userData).then(() => {
+            window.location.href = "/";
+          }).catch(() => {
+            alert('Erro desconhecido!')
+          })
         })
         .catch((error) => {
-          const errorCode = error.code;
-          if (errorCode == "auth/email-already-in-use") {
-            console.log("Email ja existe");
-          } else {
-            console.log("unable to create User");
-          }
+          handleErrorCode(error.code, error.message)
         });
       console.log("conta criada");
     } catch (err) {
@@ -45,10 +46,6 @@ function Index() {
     }
 
     console.log(email, password, cpf, firstName, secondName, phone);
-
-    await delay(500);
-
-    window.location.href = "/";
   };
 
   return (

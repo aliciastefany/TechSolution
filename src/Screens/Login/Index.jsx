@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import "./login.css";
 import { NavLink } from "react-router-dom";
 import {auth} from '../../firebase'
 import { signInWithEmailAndPassword } from "firebase/auth";
+import handleErrorCode from '../../utils/handleErrorCode'
 
 function Index() {
 
@@ -11,12 +12,13 @@ function Index() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    
     try{
       await signInWithEmailAndPassword(auth, email, password)
       window.location.href = "/app/app/painel"
       console.log('login feito com sucesso')
-    }catch (err){
-      console.log(err)
+    }catch (error){
+      handleErrorCode(error.code, error.message)
     }
 
     console.log(email, password)
