@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import "../styles/modal.css";
 import { TfiClose } from "react-icons/tfi";
 import { NavLink } from "react-router-dom";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../../firebase";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { db, auth } from "../../../firebase";
+import { createUserWithEmailAndPassword, } from "firebase/auth";
+import handleErrorCode from "../../../utils/handleErrorCode";
 
 function Modal({ isOpen, setModalClose }) {
+
+  const [role, setRole] = useState('USER');
+  const [permissions, setPermissions] = useState(['read'])
+
   function selecionar() {
     var opcao = document.getElementById("selecionar").value;
     var div = document.getElementById("modalFormClient");
@@ -13,12 +19,17 @@ function Modal({ isOpen, setModalClose }) {
     console.log(opcao);
     if (opcao == "mecanico") {
       div.style.display = "none";
+      setRole('ADM')
+      setPermissions(['read', 'write', 'update', 'delete'])
     } else if (opcao == "cliente") {
       div.style.display = "block";
+      setRole('USER')
+      setPermissions(['read'])
     }
   }
 
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [nameClient, setNameClient] = useState("");
   const [cpfCnpjClient, setCpfCnpjClient] = useState("");
   const [numberPhoneClient, setNumberPhoneClient] = useState("");
@@ -28,27 +39,45 @@ function Modal({ isOpen, setModalClose }) {
   const [numberKmCarClient, setNumberKmCarClient] = useState("");
   const [funcao, setFuncao] = useState("cliente");
 
-  console.log(funcao);
+  console.log(funcao, password, role);
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await addDoc(collection(db, "users"), {
-      email: email,
-      nomeCliente: nameClient,
-      cpfCnpjCliente: cpfCnpjClient,
-      telefoneCliente: numberPhoneClient,
-      modeloCarro: modelCarClient,
-      marcaCarro: marcaCarClient,
-      placaCarro: numberPlacaCarClient,
-      kmCarro: numberKmCarClient,
-      function: funcao,
-    });
+    try {
+      await createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
 
-    await delay(500);
+          const userData = {
+            email: email,
+            nomeCliente: nameClient,
+            cpfCnpjCliente: cpfCnpjClient,
+            telefoneCliente: numberPhoneClient,
+            modeloCarro: modelCarClient,
+            marcaCarro: marcaCarClient,
+            placaCarro: numberPlacaCarClient,
+            kmCarro: numberKmCarClient,
+            function: funcao,
+            role: role,
+            permissions: permissions,
+          }
+          const docRef = doc(db, 'users', user.uid);
 
-    window.location.href = "../app/cadastros";
+
+          setDoc(docRef, userData).then(() => {
+            window.location.href = "/app/cadastros";
+          }).catch(() => {
+            alert('Erro desconhecido!')
+          })
+        })
+        .catch((error) => {
+          handleErrorCode(error.code, error.message)
+        });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   if (isOpen) {
@@ -84,7 +113,10 @@ function Modal({ isOpen, setModalClose }) {
                 <input
                   type="text"
                   placeholder="Digite o CPF/CNPJ..."
-                  onChange={(e) => setCpfCnpjClient(e.target.value)}
+                  onChange={(e) => {
+                    setCpfCnpjClient(e.target.value)
+                    setPassword(cpfCnpjClient.slice(-7))
+                  }}
                 />
               </div>
               <div className="phone">

@@ -28,30 +28,32 @@ function NavBar() {
         <img src={Logo} alt="" />
       </div>
 
+      
+
       <div className="menu-list">
-        {['MASTER'].map(item => user.role.includes(item)).includes(true) && (
-          <NavLink to={"app/painel"} className="item">
+        {['MASTER', 'ADM'].map(item => user.role.includes(item)).includes(true) && (
+          <NavLink to={"/app/painel"} className="item">
             <TbHeartRateMonitor className="icon" />
             Painel
           </NavLink>
         )}
 
-        {['MASTER', 'ADM'].map(item => user.role.includes(item)).includes(true) && (
-          <NavLink to={"app/ordem_de_servico"} className="item">
+        {['MASTER', 'ADM', 'USER'].map(item => user.role.includes(item)).includes(true) && (
+          <NavLink to={"/app/ordem_de_servico"} className="item">
             <RiToolsFill className="icon" />
             Ordem de Serviço
           </NavLink>
         )}
 
         {['MASTER'].map(item => user.role.includes(item)).includes(true) && (
-          <NavLink to={"app/cadastros"} className="item">
+          <NavLink to={"/app/cadastros"} className="item">
           <MdPeopleAlt className="icon" />
           Cadastros
         </NavLink>
         )}
 
         {['MASTER', 'ADM'].map(item => user.role.includes(item)).includes(true) && (
-         <NavLink to={"app/agenda"} className="item">
+         <NavLink to={"/app/agenda"} className="item">
             <IoCalendarNumberOutline className="icon" />
             Agenda
           </NavLink>

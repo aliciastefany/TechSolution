@@ -57,14 +57,6 @@ function Content({ search }) {
                 </td>
                 <td>{item.hour}</td>
                 <td className="item-table">
-                  <RiPencilFill
-                    onClick={() => {
-                      setOpenEditar(true);
-                      setPuxarId(item.id)
-                    }}
-                  />
-                </td>
-                <td className="item-table">
                   <FaTrashCan
                     onClick={() => {
                       deleteAgenda(item.id);

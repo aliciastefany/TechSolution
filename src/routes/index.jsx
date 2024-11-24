@@ -6,6 +6,7 @@ import Agenda from "../Screens/Agenda/Index.jsx";
 import Login from "../Screens/Login/Index.jsx";
 import SingUp from "../Screens/SingUp/Index.jsx";
 import NovaOS from "../Screens/Ordem_de_serviço/NovaOS.jsx";
+import NovaOSView from "../Screens/Ordem_de_serviço/NovaOSView.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./permissionPage.jsx";
 
@@ -47,9 +48,17 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/app/viewos",
+        element: (
+          <ProtectedRoute requiredPermissions={['USER']}>
+            <NovaOSView />
+          </ProtectedRoute>
+        ),
+      },
+      {
         path: "/app/cadastros",
         element: (
-          <ProtectedRoute requiredPermissions={['MASTER', 'ADM']}>
+          <ProtectedRoute requiredPermissions={['MASTER']}>
             <Cadastros />
           </ProtectedRoute>
         ),

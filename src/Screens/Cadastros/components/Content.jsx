@@ -48,9 +48,6 @@ function Content({ search }) {
                   <p className="status">{item.funcao}</p>
                 </td>
                 <td className="item-table">
-                  <RiPencilFill />
-                </td>
-                <td className="item-table">
                   <FaTrashCan
                     onClick={() => {
                       deleteDataCadastro(item.id);

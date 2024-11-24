@@ -4,8 +4,13 @@ import { FaTrashCan } from "react-icons/fa6";
 import { RiPencilFill } from "react-icons/ri";
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase";
+import useAuth from "../../../hooks/useAuth";
+import { NavLink } from "react-router-dom";
+import { GrView } from "react-icons/gr";
 
 function Content({ search, filter }) {
+  const { user } = useAuth();
+
   const [ordemServico, setOrdemServico] = useState([]);
 
   const ordemServicoCollectionRef = collection(db, "dataOS");
@@ -25,6 +30,8 @@ function Content({ search, filter }) {
   useEffect(() => {
     getDataOrdemServico();
   }, []);
+
+  console.log(ordemServico)
 
   return (
     <div className="container">
@@ -55,26 +62,32 @@ function Content({ search, filter }) {
                         item.status == "Em Execução"
                           ? "#030dff"
                           : item.status == "Entregue"
-                          ? "#00bf63"
-                          : item.status == "Orçamento"
-                          ? "#ffde59"
-                          : item.status == "Cancelado"
-                          ? "#ff3131"
-                          : "#018847",
+                            ? "#00bf63"
+                            : item.status == "Orçamento"
+                              ? "#ffde59"
+                              : item.status == "Cancelado"
+                                ? "#ff3131"
+                                : "#018847",
                     }}
                   >
                     {item.status}
                   </p>
                 </td>
                 <td className="item-table">
-                  <RiPencilFill />
+                  {['USER'].map(item => user.role.includes(item)).includes(true) && (
+                    <NavLink to={"/app/viewos"} state={ordemServico}>
+                      <GrView />
+                    </NavLink>
+                  )}
                 </td>
                 <td className="item-table">
-                  <FaTrashCan
-                    onClick={() => {
-                      deleteOrdemServico(item.id);
-                    }}
-                  />
+                  {['MASTER', 'ADM'].map(item => user.role.includes(item)).includes(true) && (
+                    <FaTrashCan
+                      onClick={() => {
+                        deleteOrdemServico(item.id);
+                      }}
+                    />
+                  )}
                 </td>
               </tr>
             ))}
