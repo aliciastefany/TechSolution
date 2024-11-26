@@ -31,7 +31,7 @@ function Header({usePropsSearch, usePropsFilter}) {
             <option value="decrescente">Z-A</option>
           </select>
         </div> */}
-        <NavLink to={"../app/adicionaros"} className="button">
+        <NavLink to={"/app/adicionaros"} className="button">
           ADICIONAR
         </NavLink>
       </div>

@@ -234,7 +234,7 @@ function ContentNewOS({status}) {
         </div>
 
         <div className="buttons">
-          <NavLink to={"../app/ordem_de_servico"} className={"buttonCancelar"}>
+          <NavLink to={"/app/ordem_de_servico"} className={"buttonCancelar"}>
             Cancelar
           </NavLink>
           <button className="buttonSalvar">Salvar</button>

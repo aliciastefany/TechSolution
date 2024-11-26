@@ -53,15 +53,6 @@ function Vendas() {
                 </td>
               </tr>
             ))}
-
-            <tr>
-              <td>
-                {valor.toLocaleString("pt-br", {
-                  style: "currency",
-                  currency: "BRL",
-                })}
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>
